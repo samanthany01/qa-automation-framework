@@ -1,7 +1,7 @@
 # QA Automation Framework
 
 ## Overview
-End-to-end automation framework built using Playwright + TypeScript.
+End-to-end automation framework (UI + API + CI/CD)
 
 ## Features
 - UI Automation

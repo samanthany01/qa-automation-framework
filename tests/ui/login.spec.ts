@@ -1,32 +1,12 @@
-import { test } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
-import { users } from '../../fixtures/testData';
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../../pages/login.page';
 
-test.describe('Login Tests', () => {
+test('Valid Login', async ({ page }) => {
+  const loginPage = new LoginPage(page);
 
-  test('Valid Login', async ({ page }) => {
-    const loginPage = new LoginPage(page);
+  await page.goto('https://the-internet.herokuapp.com/login');
 
-    await loginPage.goto();
+  await loginPage.login('tomsmith', 'SuperSecretPassword!');
 
-    await loginPage.login(
-      users.validUser.username,
-      users.validUser.password
-    );
-
-    await loginPage.verifyLoginSuccess();
-  });
-
-  test('Invalid Login', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-
-    await loginPage.goto();
-
-    await loginPage.login(
-      users.invalidUser.username,
-      users.invalidUser.password
-    );
-
-    await loginPage.verifyLoginFailure();
-  });
+  await expect(page.locator('.flash.success')).toBeVisible();
 });

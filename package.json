@@ -6,12 +6,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "## Overview End-to-end automation framework built using Playwright + TypeScript.",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
     "@types/node": "^25.9.0"
   },
   "dependencies": {
     "dotenv": "^17.4.2"
+  },
+  "directories": {
+    "test": "tests"
   }
 }
